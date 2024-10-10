@@ -3,57 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PizzariaCSharp.Models.Bebidas;
+using PizzariaCSharp.Repository.Interfaces;
 
 namespace PizzariaCSharp.Repository
 {
-    public class BebidasRepository
+    public class BebidasRepository :ICrudRepository<Bebida>
     {
         private List<Bebida> _bebidas;
         private int _ultimoId = 0;
 
-        public BebidasRepository() 
+        public BebidasRepository()
         {
             _bebidas = new List<Bebida>();
         }
 
-        public Bebida Adiciona(Bebida bebida)
+        public Bebida Adicionar(Bebida bedida)
         {
             _ultimoId++;
-            bebida.Id = _ultimoId;
-            _bebidas.Add(bebida);
-            return bebida;
+            bedida.Id = _ultimoId;
+
+            _bebidas.Add(bedida);
+
+            return bedida;
         }
-        public List<Bebida>ObterTodos()
+
+        public List<Bebida> ObterTodos()
         {
             return _bebidas;
         }
+
         public Bebida Obter(int id)
         {
-            return _bebidas
-            .Where(b=> b.Id == id)
-            .FirstOrDefault();
+           return _bebidas
+                .Where(b => b.Id == id)
+                .FirstOrDefault();
         }
 
-        public Bebida Atualizar (Bebida bebida)
+        public Bebida Atualizar(Bebida bebida)
         {
-            var bebidaEncontrada = _bebidas.Where(b=> b.Id == bebida.Id).FirstOrDefault();
+            // var existe = _bebidas.Where(b => b.Id == bebida.Id).Any();
+            var bebidaEncontrada = _bebidas.Where(b => b.Id == bebida.Id).FirstOrDefault();
 
             if(bebidaEncontrada == null)
             {
-                throw new Exception ("não é possível atualizar uma bebida que não existe");
+                throw new Exception("Não é possível atualizar uma bebida que não exista.");
             }
+
             _bebidas.Remove(bebidaEncontrada);
+
             _bebidas.Add(bebida);
+
             return bebida;
         }
-        public void Deletar (int id)
+        
+        public void Deletar(int id)
         {
             var bebida = Obter(id);
+
             if(bebida == null)
             {
-                throw new Exception("não é possível deletar uma bebida que não existe");
+                throw new Exception("Não foi encontrada uma bebida com o ID " + id);
             }
+
             _bebidas.Remove(bebida);
         }
+
+        /* 
+        CRUD: Create, Read, Update, Delete
+        */
     }
 }
