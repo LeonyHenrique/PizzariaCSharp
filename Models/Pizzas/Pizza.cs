@@ -15,5 +15,16 @@ namespace PizzariaCSharp.Models.Pizzas
        public double Valor {get; set;}
        public List<Sabor> Sabores {get; set;}
 
+  public Pizza(
+            ETipoPizza tipoPizza, 
+            ETipoBorda tipoBorda, 
+            double valor, 
+            List<Sabor> sabores)
+        {
+            TipoPizza = tipoPizza;
+            TipoBorda = tipoBorda;
+            Valor = valor;
+            Sabores = sabores;
+        }
     }
 }

@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PizzariaCSharp.Repository.Interfaces
 {
-        /// <summary>
+    /// <summary>
     /// Interface do repositorio genárico baseado na contrução do modelo.
     /// </summary>
     /// <typeparam name="T">Modelo, entidade q qual será persistida.</typeparam>
-
-    public class ICrudRepository<T> 
+    public interface ICrudRepository<T> 
     {
         /// <summary>
         /// Medoto que adiciona um modelo ao banco de dados.
