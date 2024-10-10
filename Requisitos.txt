@@ -1,0 +1,18 @@
+*Entender o mínimo necessário sobre API
+*Entender as camadas de API
+*Construir algumas entidades da camadas
+
+*Cliente(id, nome, endereco)
+*Pizza(id,Tipo,Nome,TipoBorda, Lista de sabores,valor)
+*Bebida(id, nome, valor)
+*Pedido(id, cliente, pizza, Lista de pizza, lista de bebidas)
+
+API
+Model => Classe , nossa entidade da regra de negócio.
+View => Tudo aquilo que eu recebo e envio ao usuário.
+controller => Controlador, onde inicia a regra de negócio da 
+
+Repository => Simular o banco de dados.
+
+Relatórios, , saber quantas pizzas eu vendi no dia
+qual foi meu faturamento
